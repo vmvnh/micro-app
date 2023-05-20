@@ -1,3 +1,5 @@
 rootProject.name = 'micro-app'
 
 includeBuild 'eureka-server'
+includeBuild 'user-service'
+includeBuild 'api-gateway'
