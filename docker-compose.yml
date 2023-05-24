@@ -1,0 +1,23 @@
+version: '2.12'
+
+services:
+  db:
+    container_name: postgres-micro-app
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: micro-app-database
+    volumes:
+      - ./postgres_data:/var/lib/postgres/data/
+    ports:
+      - "5435:5432"
+
+  pgadmin:
+    container_name: pgadmin-micro-app
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test-email@email.ru
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
