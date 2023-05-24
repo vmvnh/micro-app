@@ -1,0 +1,28 @@
+server:
+  port: 0
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  application:
+    name: user-service # id сервера eureka
+  datasource:
+    url: jdbc:postgresql://localhost:5435/micro-app-database
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    user: root
+    password: root
+    schemas: user_service
+    url: jdbc:postgresql://localhost:5435/micro-app-database
+    locations: classpath:db/migration
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random:uuid} # для того, чтобы каждый инстанс имел уникальный id
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka # url, куда будет приходить регистрация микросервисов
